@@ -36,3 +36,32 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+
+/* MONGOOSE SETUP */
+/* First I set it up using then catch and then switched to async await*/
+
+// const PORT = process.env.PORT || 6001;
+// mongoose
+//   .connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => {
+//     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+//   })
+//   .catch((error) => console.log(`${error} did not connect`));
+
+const PORT = process.env.PORT || 6001;
+async function connectToMongo() {
+  try {
+    mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+  } catch (error) {
+    console.log(`${error} did not connect`);
+  }
+}
+
+connectToMongo();
