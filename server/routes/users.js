@@ -10,8 +10,8 @@ const router = express.Router();
 
 /* READ ROUTES */
 
-router.get(":/id", verifyToken, getUser);
-router.get(":/id/friends", verifyToken, getUserFriends);
+router.get("/:id", verifyToken, getUser);
+router.get("/:id/friends", verifyToken, getUserFriends);
 
 /* UPDATE ROUTES */
 
